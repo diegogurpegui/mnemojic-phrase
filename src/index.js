@@ -10,13 +10,21 @@ document.addEventListener('DOMContentLoaded', function () {
     'submit',
     (e) => {
       e.preventDefault();
-      const sourcePhrase = document.getElementById('source-phrase').value;
-      const mneminicWords = sourcePhrase.split(' ');
 
-      const destLang = document.getElementById('dest-lang').value;
+      const errorDiv = document.getElementById('mnemonic-convert-error');
 
-      const convertedMnemonic = processor.convertMnemonic(mneminicWords, undefined, destLang);
-      document.getElementById('dest-phrase').value = convertedMnemonic.join(' ');
+      // cleanup error
+      errorDiv.innerHTML = '';
+      try {
+        const sourcePhrase = document.getElementById('source-phrase').value;
+        const destLang = document.getElementById('dest-lang').value;
+
+        const convertedMnemonic = processor.convertMnemonic(sourcePhrase, undefined, destLang);
+        document.getElementById('dest-phrase').value = convertedMnemonic.join(' ');
+      } catch (e) {
+        console.log('Error converting', e);
+        errorDiv.innerHTML = 'Error converting. ' + e.message;
+      }
     },
     false,
   );

@@ -91,7 +91,6 @@ const generateEmojiFiles = () => {
     '1F44B',
     '1F91A',
     '1F590',
-    '270B',
     '1F596',
     '1F44C',
     '1F91E',
@@ -105,7 +104,6 @@ const generateEmojiFiles = () => {
     '1F447',
     '1F44D',
     '1F44E',
-    '270A',
     '1F44A',
     '1F91B',
     '1F91C',
@@ -120,6 +118,8 @@ const generateEmojiFiles = () => {
     '1F9B6',
     '1F442',
     '1F443',
+    '1F9E0',
+    '1F440'
   ];
 
   const usableEmojis = {
@@ -164,7 +164,7 @@ const generateEmojiFiles = () => {
 
   // prepare the wordlist text file
   const wordlist = mnemonicEmojis.map((e) => e.text).join('\n');
-  fs.writeFileSync('emoji.txt', wordlist);
+  fs.writeFileSync('./langs/emoji.txt', wordlist);
 };
 
 /**

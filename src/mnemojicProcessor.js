@@ -18,7 +18,22 @@ const supportedLangs = [
  * @param {string[]} sourceWords
  * @param {string} sourceLang
  */
-const convertMnemonic = (mnemonicWords, sourceLangArg, destLangArg) => {
+const convertMnemonic = (mnemonic, sourceLangArg, destLangArg) => {
+  let mnemonicWords = [];
+  if (typeof mnemonic == 'array') {
+    mnemonicWords = mnemonic;
+  } else if (typeof mnemonic == 'string') {
+    // check if it's a single word (no spaces)
+    if (mnemonic.indexOf(' ') < 0) {
+      // then it's emojis (take 2 chars per emoji)
+      mnemonicWords = mnemonic.match(/.{1,4}/g);
+    } else {
+      mnemonicWords = mnemonic.split(' ');
+    }
+  } else {
+    throw new Error('Wrong input mnemonic.');
+  }
+
   // --- Work on the source lang
   let sourceLang = '';
   // if the source lang was not specificied, then detected
