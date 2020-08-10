@@ -43,7 +43,7 @@ I selected a group of 64 emojis that are combined with another group of 32 emoji
 
 The reason for this is that I wanted emojis that can occupy only one character, which leaves us with less than 2048 emojis (the required amount to have a BIP39 word list).
 
-Since we cannot get to the 2048 emojis I decided to use two-emoji words. I selected 64 emojis from the "smiley faces" group and 32 emojis from the "hands and body" group. This was done arbitrarily based on emojis that are widely supported, look distinctively enough and take 2 bytes.
+Since we cannot get to the 2048 emojis I decided to use two-emoji words. I selected 64 emojis from the "smiley faces" group and 32 emojis from the "hands and body" group. This was done arbitrarily based on emojis that are widely supported, look distinctively enough and take 4 bytes.
 
 With that in mind, the 2048 words are formed like this:<br/>
 `<firstEmoji><secondEmoji>`<br/>
