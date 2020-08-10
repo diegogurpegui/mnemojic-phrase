@@ -1,11 +1,25 @@
 const fs = require('fs');
+const path = require('path');
 // this JSON was taken from https://github.com/amio/emoji.json
 const emojis = require('./emoji.json');
+
+const supportedLangs = [
+  'chinese_simplified',
+  'chinese_traditional',
+  'czech',
+  'english',
+  'french',
+  'italian',
+  'japanese',
+  'korean',
+  'spanish',
+  'emoji',
+];
 
 /**
  * Generate the wordlist of emojis
  */
-const generateWordList = () => {
+const generateEmojiFiles = () => {
   // lists of Unicode emojis for the first and second half of the "word"
   const firstEmojiCodeList = [
     '1F600',
@@ -150,7 +164,26 @@ const generateWordList = () => {
 
   // prepare the wordlist text file
   const wordlist = mnemonicEmojis.map((e) => e.text).join('\n');
-  fs.writeFileSync(path.join(__dirname, './langs', `emoji.txt`), wordlist);
+  fs.writeFileSync('emoji.txt', wordlist);
 };
 
-generateWordList();
+/**
+ * Load the word lists for each language into the wordlists file
+ */
+const generateWordlistsFiles = () => {
+  const wordlists = {};
+
+  for (let l = 0; l < supportedLangs.length; l++) {
+    const lang = supportedLangs[l];
+
+    const wordlistText = fs.readFileSync(path.join(__dirname, './langs', `${lang}.txt`), { encoding: 'utf-8' });
+    const wordList = wordlistText.split('\n');
+    wordlists[lang] = wordList;
+  }
+
+  // save to file
+  fs.writeFileSync('./wordlists.json', JSON.stringify(wordlists));
+};
+
+generateEmojiFiles();
+generateWordlistsFiles();

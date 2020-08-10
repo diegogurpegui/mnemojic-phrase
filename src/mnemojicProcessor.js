@@ -1,5 +1,4 @@
-const fs = require('fs');
-const path = require('path');
+const wordlists = require('./wordlists.json');
 
 const supportedLangs = [
   'chinese_simplified',
@@ -13,25 +12,6 @@ const supportedLangs = [
   'spanish',
   'emoji',
 ];
-const wordlists = {};
-
-/**
- * Load the word lists for each language into the wordlists variable
- */
-const loadLanguages = () => {
-  // if the word lists have already been loaded, then exit
-  if (Object.keys(wordlists).length > 0) {
-    return;
-  }
-
-  for (let l = 0; l < supportedLangs.length; l++) {
-    const lang = supportedLangs[l];
-
-    const wordlistText = fs.readFileSync(path.join(__dirname, './langs', `${lang}.txt`), { encoding: 'utf-8' });
-    const wordList = wordlistText.split('\n');
-    wordlists[lang] = wordList;
-  }
-};
 
 /**
  *
@@ -39,8 +19,6 @@ const loadLanguages = () => {
  * @param {string} sourceLang
  */
 const convertMnemonic = (mnemonicWords, sourceLangArg, destLangArg) => {
-  loadLanguages();
-
   // --- Work on the source lang
   let sourceLang = '';
   // if the source lang was not specificied, then detected
@@ -86,6 +64,5 @@ const convertMnemonic = (mnemonicWords, sourceLangArg, destLangArg) => {
 };
 
 module.exports = {
-  generateWordList,
   convertMnemonic,
 };

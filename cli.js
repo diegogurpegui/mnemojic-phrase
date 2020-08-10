@@ -1,5 +1,5 @@
 const { program } = require('commander');
-const utils = require('./src/utils');
+const processor = require('./src/mnemojicProcessor');
 
 program.version('0.1.0');
 
@@ -15,7 +15,7 @@ program
     console.log(`Converting phrase from '${sourceLang}' to '${destLang}'`);
 
     const mnemonicWords = mnemonicPhrase.split(' ');
-    const convertedMnemonic = utils.convertMnemonic(mnemonicWords, sourceLang, destLang);
+    const convertedMnemonic = processor.convertMnemonic(mnemonicWords, sourceLang, destLang);
     console.log(convertedMnemonic.join(' '));
   });
 
