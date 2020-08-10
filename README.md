@@ -1,4 +1,4 @@
-# Mnemonic-phrase
+# Mnemojic-phrase
 
 The mnemonic languange that nobody asked for: **emojis**<br/>
 And the tool that nobody asked for: the mnemomnic phrase lang converter.
