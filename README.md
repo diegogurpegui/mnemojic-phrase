@@ -5,14 +5,22 @@ And the tool that nobody asked for: the mnemomnic phrase lang converter.
 
 Based on the [BIP 39 spec](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki).
 
-## Web tool
+The wordlist can be found here:<br/>
+https://github.com/diegogurpegui/mnemojic-phrase/blob/master/utils/emoji.txt
+
+## Converter
+
+The converter is just an automated tool that replaces each word in the phrase with the equivalent word 
+for the same index/position in the destination language (eg. emoji).
+
+### Web interface
 
 You have a web tool available here:<br/>
 https://diegogurpegui.com/mnemojic-phrase
 
 The files for that web version are automatically served from the "web" directory in this repo.
 
-## CLI tool
+### CLI interface
 
 There is also a cli tool un Node.js that you can use by running:
 ```
