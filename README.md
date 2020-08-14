@@ -18,7 +18,9 @@ for the same index/position in the destination language (eg. emoji).
 You have a web tool available here:<br/>
 https://diegogurpegui.com/mnemojic-phrase
 
-The files for that web version are automatically served from the "web" directory in this repo.
+The files for that web version are automatically served from the "web" directory in this repo. Still, it uses third-party library so you should be VERY carefull when using it.
+
+The website should be able to run 100% offline.
 
 ### CLI interface
 
